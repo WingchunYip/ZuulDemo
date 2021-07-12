@@ -7,7 +7,7 @@ spring:
   application:
     name: 3-1-ZUUL-SERVICE
   profiles:
-    active: LIUYIJUN
+    active: dev
 #    active: LIUZHONGXUN
   cloud:
     loadbalancer:
@@ -15,9 +15,12 @@ spring:
         enabled: true
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.52.88.176:3306/DB2_5?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
-    username: user2_5
-    password: ooad5
+#    url: jdbc:mysql://47.52.88.176:3306/DB2_5?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+#    username: user2_5
+#    password: ooad5
+    url: jdbc:mysql://106.14.83.157:3306/oomall
+    username: root
+    password: ye7785001
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       #初始化时建立物理连接的个数
