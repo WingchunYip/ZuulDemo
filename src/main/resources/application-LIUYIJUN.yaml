@@ -1,0 +1,91 @@
+server:
+  port: 8555
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 20
+    ip-address: 39.99.187.90
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://www.clines.club:2222/eureka/
+#      defaultZone: http://106.14.83.157:8080/eureka/
+
+
+zuul:
+  routes:
+    route-ad:
+      serviceId: 2-5-AD-SERVICE
+      path: /adService/**
+    route-address:
+      serviceId: 1-2-ADDRESS-SERVICE
+      path: /addressService/**
+    route-admin:
+      serviceId: 3-1-ADMIN-SERVICE
+      path: /userInfoService/admin/**
+    route-aftersale:
+      serviceId: 1-2-AFTERSALES-SERVICE
+      path: /afterSaleService/**
+    route-brand:
+      serviceId: 2-6-GOODS-SERVICE
+      path: /brandService/**
+    route-cart:
+      serviceId: 2-3-CART-SERVICE
+      path: /cartService/**
+    route-category:
+      serviceId: 2-6-GOODS-SERVICE
+      path: /categoryService/**
+    route-collection:
+      serviceId: 1-2-COLLECTION-SERVICE
+      path: /collectionService/**
+    route-comment:
+      serviceId: 1-2-COMMENT-SERVICE
+      path: /commentService/**
+    route-coupon:
+      serviceId: 3-1-COUPON-SERVICE
+      path: /couponService/**
+    route-freight:
+      serviceId: 2-3-FREIGHT-SERVICE
+      path: /freightService/**
+    route-footprint:
+      serviceId: 1-2-FOOTPRINT-SERVICE
+      path: /footprintService/**
+    route-goods:
+      serviceId: 2-6-GOODS-SERVICE
+      path: /goodsInfoService/**
+    route-groupon:
+      serviceId: 3-1-GROUPON-SERVICE
+      path: /grouponService/**
+    route-log:
+      serviceId: 2-6-LOG-SERVICE
+      path: /logService/**
+    route-presale:
+      serviceId: 3-1-PRESALE-SERVICE
+      path: /presaleService/**
+    route-share:
+      serviceId: 1-2-SHARE-SERVICE
+      path: /shareService/**
+    route-order:
+      serviceId: 2-5-ORDER-SERVICE
+      path: /orderService/**
+    route-topic:
+      serviceId: 2-6-TOPIC-SERVICE
+      path: /topicService/**
+    route-user:
+      serviceId: 3-1-USER-SERVICE
+      path: /userInfoService/**
+    route-wxpayment:
+      serviceId: 2-5-WXPAYMENT-SERVICE
+      path: /wxPaymentService/**
+    route-logistics:
+      serviceId: 1-2-LOGSTICS-SERVICE
+      path: /logisticsService/**
+    route-payment:
+      serviceId: 2-5-PAYMENT-SERVICE
+      path: /paymentService/**
+    route-discount:
+      serviceId: 3-1-DISCOUNT-SERVICE
+      path: /discoutService/**

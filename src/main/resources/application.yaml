@@ -1,0 +1,89 @@
+server:
+#  port: 8000
+  connection-timeout: 30000
+#  address: 192.168.43.93
+
+spring:
+  application:
+    name: 3-1-ZUUL-SERVICE
+  profiles:
+    active: LIUYIJUN
+#    active: LIUZHONGXUN
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.52.88.176:3306/DB2_5?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: user2_5
+    password: ooad5
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #初始化时建立物理连接的个数
+      initial-size: 3
+      #  最小连接池数量
+      min-idle: 3
+      #最大连接池数量
+      max-active: 10
+      #获取连接时最大等待时间
+      max-wait: 60000
+      #配置监控页面访问登录名及密码
+      #      stat-view-servlet:
+      #        login-username: root
+      #        login-password: ye7785001
+      validation-query: select 1
+      filter:
+        stat:
+          #是否开启慢sql查询监控
+          log-slow-sql: true
+          #慢SQL执行时间
+          slow-sql-millis: 100
+
+mybatis:
+  #domain对象的包
+  type-aliases-package: xmu.oomall.zuul.domain
+  #mapper。xml所在的位置
+  mapper-locations: classpath:xmu.oomall.mapper/*.xml
+  configuration:
+    #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
+    mapUnderscoreToCamelCase: true
+    map-underscore-to-camel-case: true
+
+
+info:
+  app.name: oomall
+  company.name: xmu
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+      #path: /user/** #解析路径
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
+ribbon:
+#  eager-load:
+#    enabled: true
+#  eureka:
+#    enable: false #为Ribbon禁用Eureka
+  #http请求连接建立超时时间（ms）
+  ReadTimeout: 30000
+  #http请求处理超时时间（ms）
+  ConnectTimeout: 60000
+#  #默认重试次数
+#  MaxAutoRetries: 2
+#  #默认尝试的实例数
+#  MaxAutoRetriesNextServer: 2
+
+zuul:
+  SendErrorFilter:
+    error:
+      disable: true
+  host:
+    socket-timeout-millis: 30000
+    connect-timeout-millis: 30000
+
+  retryable: true

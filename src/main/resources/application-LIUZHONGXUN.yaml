@@ -1,0 +1,46 @@
+server:
+  port: 8000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 20
+    ip-address: 47.102.213.234
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://www.clines.club:2222/eureka/
+#      defaultZone: http://106.14.83.157:8080/eureka/
+
+
+zuul:
+  routes:
+    route-footprint:
+      serviceId: 3-9-FOOTPRINT-SERVICE
+      path: /footprintService/**
+    route-logistics:
+      serviceId: 3-9-LOGISTICS-SERVICE
+      path: /logisticsService/**
+    route-ad:
+      serviceId: 3-9-AD-SERVICE
+      path: /adService/**
+    route-log:
+      serviceId: 3-9-LOG-SERVICE
+      path: /logService/**
+    route-collection:
+      serviceId: 3-9-COLLECTITEM-SERVICE
+      path: /collectionService/**
+    route-freight:
+      serviceId: 3-9-FREIGHT-SERVICE
+      path: /freightService/**
+    route-admin:
+      serviceId: 3-1-ADMIN-SERVICE
+      path: /userInfoService/admin/**
+    route-user:
+      serviceId: 3-1-USER-SERVICE
+      path: /userInfoService/**
+    route-address:
+      serviceId: 3-1-ADDRESS-SERVICE
+      path: /addressService/**
